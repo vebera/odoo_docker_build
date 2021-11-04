@@ -1,0 +1,16 @@
+# Docker hub user
+DOCKER_USER=<your username>
+
+# Docker hub password
+DOCKER_PASS=<your docker password>
+
+# Version tag (will be used to tag your docker image)
+TAG=15
+
+# Find a respective `odoo_15.0.XXXXXXXX_amd64.changes`
+# by the url https://nightly.odoo.com/15.0/nightly/deb/
+# and copy-paste a checksums-SHA1
+# line across the .deb filename (odoo_15.0.XXXXXXXX_all.deb)
+ODOO_VERSION=15.0
+ODOO_RELEASE=20211007
+ODOO_SHA=aee026f813f334400aa49dc857d4043719f8f395
