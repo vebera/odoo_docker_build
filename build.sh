@@ -29,7 +29,7 @@ printf "  ODOO_RELEASE:      ${BLUE}${ODOO_RELEASE}${NC}\n"
 printf "===============================================================\n"
 
 
-docker build --build-arg ODOO_VERSION=${ODOO_VERSION} \
+DOCKER_BUILDKIT=1 docker build --build-arg ODOO_VERSION=${ODOO_VERSION} \
     --build-arg ODOO_RELEASE=${ODOO_RELEASE} \
     --build-arg ODOO_SHA=${ODOO_SHA} . -t ${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}
 docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}" docker.io
