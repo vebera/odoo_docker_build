@@ -20,14 +20,20 @@ else
   source $config
 fi
 
+# Checksums-SHA1 from the file `odoo_15.0.XXXXXXXX_amd64.changes`
+# url https://nightly.odoo.com/15.0/nightly/deb/
+# line across the .deb filename (odoo_15.0.XXXXXXXX_all.deb)
+ODOO_SHA="$(curl -o odoo.sha -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_amd64.changes \
+          && cat odoo.sha | grep -m 1 odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb | cut -f 2 -d ' ')"
+
 printf "===============================================================\n"
 printf "  DOCKER_USER:       ${BLUE}${DOCKER_USER}${NC}\n"
 printf "  DOCKER_PASS:       ${BLUE}${DOCKER_PASS}${NC}\n"
 printf "  ODOO_VERSION:      ${BLUE}${ODOO_VERSION}${NC}\n"
 printf "  VERSION TAG:       ${BLUE}${TAG}${NC}\n"
 printf "  ODOO_RELEASE:      ${BLUE}${ODOO_RELEASE}${NC}\n"
+printf "  ODOO_SHA:          ${BLUE}${ODOO_SHA}${NC}\n"
 printf "===============================================================\n"
-
 
 DOCKER_BUILDKIT=1 docker build --build-arg ODOO_VERSION=${ODOO_VERSION} \
     --build-arg ODOO_RELEASE=${ODOO_RELEASE} \
