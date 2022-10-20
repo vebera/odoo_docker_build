@@ -1,6 +1,6 @@
 # odoo_docker_build
 
-Sometimes you need additional Pyton libraries, so I forked the official Odoo Dockerfile and slightly adjusted it (thanks to Odoo team for such a a great product!)
+Sometimes you need additional Python libraries, so I forked the official Odoo Dockerfile and slightly adjusted it (thanks to Odoo team for such a a great product!)
 
 1. Clone the repo
 2. Copy `_env` into `.env` and edit it.
