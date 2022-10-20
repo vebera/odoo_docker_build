@@ -1,5 +1,5 @@
 FROM debian:bullseye-slim
-LABEL maintainer="vasyl.melnychuk@accessholding.com"
+LABEL maintainer="vm.remote@gmail.com"
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
