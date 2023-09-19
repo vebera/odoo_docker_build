@@ -40,3 +40,5 @@ DOCKER_BUILDKIT=1 docker build --build-arg ODOO_VERSION=${ODOO_VERSION} \
     --build-arg ODOO_SHA=${ODOO_SHA} . -t ${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}
 docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}" docker.io
 docker push ${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}
+
+printf "  BUILD: ${BLUE}${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}${NC} COMPLETED. \n"
