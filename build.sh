@@ -28,7 +28,7 @@ ODOO_SHA="$(curl -o odoo.sha -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightl
 
 printf "===============================================================\n"
 printf "  DOCKER_USER:       ${BLUE}${DOCKER_USER}${NC}\n"
-printf "  DOCKER_PASS:       ${BLUE}${DOCKER_PASS}${NC}\n"
+# printf "  DOCKER_PASS:       ${BLUE}${DOCKER_PASS}${NC}\n"
 printf "  ODOO_VERSION:      ${BLUE}${ODOO_VERSION}${NC}\n"
 printf "  VERSION TAG:       ${BLUE}${TAG}${NC}\n"
 printf "  ODOO_RELEASE:      ${BLUE}${ODOO_RELEASE}${NC}\n"
@@ -38,7 +38,7 @@ printf "===============================================================\n"
 DOCKER_BUILDKIT=1 docker build --build-arg ODOO_VERSION=${ODOO_VERSION} \
     --build-arg ODOO_RELEASE=${ODOO_RELEASE} \
     --build-arg ODOO_SHA=${ODOO_SHA} . -t ${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}
-docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}" docker.io
+echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin docker.io
 docker push ${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}
 
 printf "  BUILD: ${BLUE}${DOCKER_USER}/odoo:${TAG}.${ODOO_RELEASE}${NC} COMPLETED. \n"

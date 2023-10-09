@@ -37,6 +37,9 @@ RUN apt-get update && \
             python3-openssl \
             git \
             python3-xlsxwriter \
+# Cybrosys
+            python3-pandas \
+# /Cybrosys
 # CRND
             python3-html2text \
             poppler-utils \
