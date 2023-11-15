@@ -1,11 +1,23 @@
+# Docker registry
+DOCKER_REGISTRY=docker.io
+
 # Docker hub user
-DOCKER_USER=<your username>
+DOCKER_USER=youruserid
 
 # Docker hub password
-DOCKER_PASS=<your docker password>
+DOCKER_PASS=43543543543
 
-# Version tag (will be used to tag your docker image)
-TAG=15
+# Docker image and version tag (will be used to tag your docker image)
+DOCKER_IMAGE=odoo
+TAG=17
+ODOO_RELEASE=20231115
 
-ODOO_VERSION=15.0
-ODOO_RELEASE=20211007
+# ----------------------------
+## Dockerfile name (in case of other meteor and node versions)
+DOCKER_FILE=Dockerfile
+
+## Docker image prune fiter (https://docs.docker.com/engine/reference/commandline/image_prune/)
+PRUNE_FILTER="until=48h"
+
+## Docker repository
+DOCKER_BUILDKIT=1
