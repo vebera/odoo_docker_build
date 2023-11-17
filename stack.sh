@@ -23,8 +23,12 @@ showenv() {
   # url https://nightly.odoo.com/17.0/nightly/deb/
   # line across the .deb filename (odoo_17.0.XXXXXXXX_all.deb)
   ODOO_VERSION=17.0
-  ODOO_SHA="$(curl -o odoo.sha -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_amd64.changes \
-            && cat odoo.sha | grep -m 1 odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb | cut -f 2 -d ' ')"
+  if ! ODOO_SHA="$(curl -o odoo.sha -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_amd64.changes \
+            && cat odoo.sha | grep -m 1 odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb | cut -f 2 -d ' ')";
+  then
+    printf "\n${RED}Error getting ${ODOO_VERSION}.${ODOO_RELEASE}${NC}\n\n";
+    exit 1
+  fi
 
   printf "===============================================================\n"
   printf "  DOCKER_REGISTRY:   ${BLU}${DOCKER_REGISTRY}${NC}\n"
